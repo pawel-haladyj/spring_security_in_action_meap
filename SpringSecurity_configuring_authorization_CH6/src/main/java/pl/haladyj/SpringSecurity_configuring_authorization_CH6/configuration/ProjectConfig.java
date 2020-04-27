@@ -51,7 +51,11 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest()        //refers any incomming request
                 //.permitAll();        //allows access to all requests
                 //.hasAuthority("WRITE"); //only one authority indicated in method
-                .hasAnyAuthority("WRITE", "READ");
+                //.hasAnyAuthority("WRITE", "READ"); // consider all indicated params
+                .access("hasAnyAuthority('WRITE','READ')");// different syntax, allows to have varing content
+                                                                    // depending on the logic, most flexible of all
+                                                                    // may use both: hasAuthority, hasAnyAuthority
+
     }
 
 
