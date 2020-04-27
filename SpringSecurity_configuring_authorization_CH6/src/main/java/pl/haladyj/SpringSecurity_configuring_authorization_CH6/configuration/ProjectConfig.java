@@ -25,13 +25,13 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         var user1 = User
                 .withUsername("john")
                 .password("12345")
-                .authorities("READ")
+                .authorities("ROLE_ADMIN") //folowed by ROLE_ -> role, with no prefix -> authority
                 .build();
 
         var user2 = User
                 .withUsername("jane")
                 .password("12345")
-                .authorities("READ","WRITE","DELETE")
+                .authorities("ROLE_MANAGER")
                 .build();
 
         mananger.createUser(user1);
@@ -46,17 +46,24 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
 
+        //String expression = "hasAuthority('READ') and !hasAuthority('DELETE')";
+        String expression2 = "hasRole('MANAGER')";
+
         http
                 .authorizeRequests() //specify requests on endpoints
                 .anyRequest()        //refers any incomming request
                 //.permitAll();        //allows access to all requests
                 //.hasAuthority("WRITE"); //only one authority indicated in method
                 //.hasAnyAuthority("WRITE", "READ"); // consider all indicated params
-                .access("hasAuthority('READ') and !hasAuthority('DELETE')");
+                //.access(expression);
                                                                     // different syntax, allows to have varing content
                                                                     // depending on the logic, most flexible of all
                                                                     // may use both: hasAuthority, hasAnyAuthority
                                                                     // and combine logic
+                                                                    // input as a String -> parameter
+                //.hasRole("ADMIN"); // refers to roles, not authorities - works like hasAuthority()
+                //.hasAnyRole("ADMIN","MANAGER"); //similar to hasAnyAuthority() -> refers to roles, not authorities
+                .access(expression2);
 
     }
 
