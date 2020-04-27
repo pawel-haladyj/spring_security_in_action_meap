@@ -70,7 +70,8 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
                 //.hasRole("ADMIN"); // refers to roles, not authorities - works like hasAuthority()
                 //.hasAnyRole("ADMIN","MANAGER"); //similar to hasAnyAuthority() -> refers to roles, not authorities
                 //.access(expression2);
-                .access(expression4);
+                //.access(expression4);
+                .denyAll(); // restricts access to all
 
     }
 
