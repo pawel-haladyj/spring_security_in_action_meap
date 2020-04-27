@@ -30,13 +30,15 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         var user1 = User
                 .withUsername("john")
                 .password("12345")
-                .roles("ADMIN") //followed by ROLE_ -> role, with no prefix -> authority
+//                .roles("ADMIN") //followed by ROLE_ -> role, with no prefix -> authority
+                .authorities("read")
                 .build();
 
         var user2 = User
                 .withUsername("jane")
                 .password("12345")
-                .roles("MANAGER")
+//                .roles("MANAGER")
+                .authorities("read","premium")
                 .build();
 
         mananger.createUser(user1);
@@ -128,18 +130,29 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
                     .denyAll();
     }*/
 
-    @Override
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
         http.csrf().disable();
 
- /*       http.authorizeRequests()
+ *//*       http.authorizeRequests()
                 .mvcMatchers("/hello").authenticated();
-        //required authorization on both endpoints /hello and /hello/*/
+        //required authorization on both endpoints /hello and /hello/*//*
 
         http.authorizeRequests()
                 .antMatchers("/hello").authenticated();
         //required authentication for both endpoints /hello and /hello/
         //if no credentials endpoint /hello is protected and /hello/ is not protected
+    }*/
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic();
+
+        http.authorizeRequests()
+                .regexMatchers(".*[(us)|(uk)|(ca)|(en)]+.*")
+                    .authenticated()
+                .anyRequest()
+                    .hasAuthority("read");
     }
 }
