@@ -81,9 +81,9 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                .mvcMatchers("/hello")
-                    .hasRole("ADMIN")
-                .mvcMatchers("/ciao")
-                    .hasRole("MANAGER");
+                .mvcMatchers("/hello").hasRole("ADMIN") //aims endpoints and restricts aimed
+                .mvcMatchers("/ciao").hasRole("MANAGER")
+                .anyRequest().permitAll(); //permits access to all other - optional -> to make code clear
+
     }
 }
