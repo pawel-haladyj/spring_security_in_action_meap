@@ -17,3 +17,7 @@ curl http://localhost:8080/a/b/c
 curl http://localhost:8080/a/b
 curl http://localhost:8080/a
 
+curl http://localhost:8080/product/1234567890
+curl http://localhost:8080/product/1234567890a
+
+

@@ -91,19 +91,19 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
     }*/
 
-    @Override
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
 
         http.csrf().disable();
 
-/*        http.authorizeRequests()
+*//*        http.authorizeRequests()
                 .mvcMatchers(HttpMethod.GET, "/a")
                     .authenticated()
                 .mvcMatchers(HttpMethod.POST, "/a")
                     .permitAll()
                 .anyRequest()
-                    .denyAll();*/
+                    .denyAll();*//*
 
         http.authorizeRequests()
                 .mvcMatchers("a/b/**")//using blank card -> different behaviour for a, b, c (b, c equal)
@@ -115,5 +115,16 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         //bad credentials user has 401 at all endpoints
         // ** replaces any String pattern -> ranges any amount of levels
         // * replaces any String pattern -> ranges 1 level
+    }*/
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic();
+        http.csrf().disable();
+        http.authorizeRequests()
+                .mvcMatchers("/product/{code:^[0-9]*$}")
+                    .permitAll()
+                .anyRequest()
+                    .denyAll();
     }
 }
