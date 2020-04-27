@@ -14,12 +14,12 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
 
     @Bean
-    public UserDetailsService userDetailsService(){
+    public UserDetailsService userDetailsService() {
         var mananger = new InMemoryUserDetailsManager();
 
         var user1 = User
@@ -49,7 +49,8 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests() //specify requests on endpoints
                 .anyRequest()        //refers any incomming request
-                .permitAll();        //allows access to all requests
+                //.permitAll();        //allows access to all requests
+                .hasAuthority("WRITE");
     }
 
 
