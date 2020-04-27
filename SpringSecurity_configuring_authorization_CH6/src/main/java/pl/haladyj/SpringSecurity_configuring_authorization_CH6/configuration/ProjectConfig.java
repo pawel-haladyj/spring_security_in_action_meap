@@ -29,7 +29,7 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         var user1 = User
                 .withUsername("john")
                 .password("12345")
-                .roles("ADMIN") //folowed by ROLE_ -> role, with no prefix -> authority
+                .roles("ADMIN") //followed by ROLE_ -> role, with no prefix -> authority
                 .build();
 
         var user2 = User
@@ -46,7 +46,7 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-    @Override
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
 
@@ -73,7 +73,17 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
                 //.access(expression4);
                 .denyAll(); // restricts access to all
 
+    }*/
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic();
+
+        http
+                .authorizeRequests()
+                .mvcMatchers("/hello")
+                    .hasRole("ADMIN")
+                .mvcMatchers("/ciao")
+                    .hasRole("MANAGER");
     }
-
-
 }
