@@ -2,6 +2,7 @@ package pl.haladyj.SpringSecurity_configuring_authorization_CH6.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -75,15 +76,33 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
     }*/
 
+/*    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic();
+
+        http.authorizeRequests()
+                .mvcMatchers("/hello").hasRole("ADMIN") //aims endpoints and restricts aimed
+                .mvcMatchers("/ciao").hasRole("MANAGER")
+                //.anyRequest().permitAll(); //permits access to all other - optional -> to make code clear
+                .anyRequest().authenticated(); //authenticated but not authorized
+                                                //bad credentials - blank response, no content
+                                                //no credentials - 401
+                                                //matching credentials 200 + content
+
+    }*/
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
 
-        http
-                .authorizeRequests()
-                .mvcMatchers("/hello").hasRole("ADMIN") //aims endpoints and restricts aimed
-                .mvcMatchers("/ciao").hasRole("MANAGER")
-                .anyRequest().permitAll(); //permits access to all other - optional -> to make code clear
+        http.csrf().disable();
 
+        http.authorizeRequests()
+                .mvcMatchers(HttpMethod.GET, "/a")
+                    .authenticated()
+                .mvcMatchers(HttpMethod.POST, "/a")
+                    .permitAll()
+                .anyRequest()
+                    .denyAll();
     }
 }

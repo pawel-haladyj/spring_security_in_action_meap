@@ -1,0 +1,8 @@
+6.2.2
+curl -XPOST http://localhost:8080/a
+curl -XGET http://localhost:8080/a
+curl -u jane:12345 -XGET http://localhost:8080/a
+curl -u john:12345 -XGET http://localhost:8080/a
+curl -u jane:12345 -XPOST http://localhost:8080/a
+curl -u john:12345 -XPOST http://localhost:8080/a
+curl -u jane:12345 -XGET http://localhost:8080/a/b
