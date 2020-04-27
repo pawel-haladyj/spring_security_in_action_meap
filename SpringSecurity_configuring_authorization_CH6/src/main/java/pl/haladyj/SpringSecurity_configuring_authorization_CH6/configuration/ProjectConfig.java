@@ -10,6 +10,10 @@ import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.time.LocalTime;
+
+import static java.time.LocalTime.now;
+
 @Configuration
 public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
@@ -47,7 +51,9 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         http.httpBasic();
 
         //String expression = "hasAuthority('READ') and !hasAuthority('DELETE')";
-        String expression2 = "hasRole('MANAGER')";
+        //String expression2 = "hasRole('MANAGER')";
+        Boolean expression3 = now().isAfter(LocalTime.of(5,0));
+        String expression4 = expression3.toString();
 
         http
                 .authorizeRequests() //specify requests on endpoints
@@ -63,7 +69,8 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
                                                                     // input as a String -> parameter
                 //.hasRole("ADMIN"); // refers to roles, not authorities - works like hasAuthority()
                 //.hasAnyRole("ADMIN","MANAGER"); //similar to hasAnyAuthority() -> refers to roles, not authorities
-                .access(expression2);
+                //.access(expression2);
+                .access(expression4);
 
     }
 
