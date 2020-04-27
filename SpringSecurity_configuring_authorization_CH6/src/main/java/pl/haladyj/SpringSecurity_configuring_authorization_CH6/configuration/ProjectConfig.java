@@ -97,12 +97,23 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
         http.csrf().disable();
 
-        http.authorizeRequests()
+/*        http.authorizeRequests()
                 .mvcMatchers(HttpMethod.GET, "/a")
                     .authenticated()
                 .mvcMatchers(HttpMethod.POST, "/a")
                     .permitAll()
                 .anyRequest()
-                    .denyAll();
+                    .denyAll();*/
+
+        http.authorizeRequests()
+                .mvcMatchers("a/b/**")//using blank card -> different behaviour for a, b, c (b, c equal)
+                    .authenticated()
+                .anyRequest()
+                    .permitAll();
+        //all authorized users has access to all endpoints
+        //not authenticated users have access to A, if reached B or C 403 is returned (not authorized)
+        //bad credentials user has 401 at all endpoints
+        // ** replaces any String pattern -> ranges any amount of levels
+        // * replaces any String pattern -> ranges 1 level
     }
 }
