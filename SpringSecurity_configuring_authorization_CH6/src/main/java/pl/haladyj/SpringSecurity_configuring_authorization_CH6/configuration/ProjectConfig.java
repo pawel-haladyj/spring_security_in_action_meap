@@ -31,7 +31,7 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         var user2 = User
                 .withUsername("jane")
                 .password("12345")
-                .authorities("WRITE")
+                .authorities("READ","WRITE","DELETE")
                 .build();
 
         mananger.createUser(user1);
@@ -52,9 +52,11 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
                 //.permitAll();        //allows access to all requests
                 //.hasAuthority("WRITE"); //only one authority indicated in method
                 //.hasAnyAuthority("WRITE", "READ"); // consider all indicated params
-                .access("hasAnyAuthority('WRITE','READ')");// different syntax, allows to have varing content
+                .access("hasAuthority('READ') and !hasAuthority('DELETE')");
+                                                                    // different syntax, allows to have varing content
                                                                     // depending on the logic, most flexible of all
                                                                     // may use both: hasAuthority, hasAnyAuthority
+                                                                    // and combine logic
 
     }
 
