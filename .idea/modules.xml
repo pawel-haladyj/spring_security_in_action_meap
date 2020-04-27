@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/SpringSecurity_configuring_authorization_CH6/SpringSecurity_configuring_authorization_CH6.iml" filepath="$PROJECT_DIR$/SpringSecurity_configuring_authorization_CH6/SpringSecurity_configuring_authorization_CH6.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/spring_security_in_action_meap.iml" filepath="$PROJECT_DIR$/.idea/spring_security_in_action_meap.iml" />
+    </modules>
+  </component>
+</project>
