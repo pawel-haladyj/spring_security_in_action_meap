@@ -117,7 +117,7 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
         // * replaces any String pattern -> ranges 1 level
     }*/
 
-    @Override
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
         http.csrf().disable();
@@ -126,5 +126,20 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
                     .permitAll()
                 .anyRequest()
                     .denyAll();
+    }*/
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.httpBasic();
+        http.csrf().disable();
+
+ /*       http.authorizeRequests()
+                .mvcMatchers("/hello").authenticated();
+        //required authorization on both endpoints /hello and /hello/*/
+
+        http.authorizeRequests()
+                .antMatchers("/hello").authenticated();
+        //required authentication for both endpoints /hello and /hello/
+        //if no credentials endpoint /hello is protected and /hello/ is not protected
     }
 }
