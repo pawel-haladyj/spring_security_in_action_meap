@@ -44,7 +44,7 @@ public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
         http.httpBasic();
         http.authorizeRequests()
                 .anyRequest()
-                .permitAll();
+                .authenticated();
     }
 
 
@@ -56,18 +56,12 @@ public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     @Deprecated
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        var userDetailsService = new InMemoryUserDetailsManager();
-
-        var user = User
-                .withUsername("john")
+        auth
+                .inMemoryAuthentication()
+                .withUser("john")
                 .password("12345")
                 .authorities("read")
-                .build();
-
-        userDetailsService.createUser(user);
-
-        auth
-                .userDetailsService(userDetailsService)
+                .and()
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }
 }
