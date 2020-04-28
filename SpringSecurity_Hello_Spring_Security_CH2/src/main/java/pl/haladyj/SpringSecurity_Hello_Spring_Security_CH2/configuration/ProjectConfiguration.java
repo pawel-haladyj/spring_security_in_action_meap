@@ -48,11 +48,11 @@ public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-    /**
+/*    *//**
      * CAUTION: used NoOpPasswordEncoder - do not use in production
      * @param auth
      * @throws Exception
-     */
+     *//*
     @Override
     @Deprecated
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -63,5 +63,5 @@ public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
                 .authorities("read")
                 .and()
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
-    }
+    }*/
 }
