@@ -4,6 +4,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/SpringSecurity_configuring_authorization_CH6/pom.xml" />
+        <option value="$PROJECT_DIR$/SpringSecurity_Hello_Spring_Security_CH2/pom.xml" />
       </list>
     </option>
   </component>

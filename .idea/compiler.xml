@@ -6,15 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SpringSecurity_Hello_Spring_Security_CH2" />
         <module name="SpringSecurity_configuring_authorization_CH6" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringSecurity_configuring_authorization_CH6" target="11" />
+      <module name="SpringSecurity_Hello_Spring_Security_CH2" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringSecurity_Hello_Spring_Security_CH2" options="-parameters" />
       <module name="SpringSecurity_configuring_authorization_CH6" options="-parameters" />
     </option>
   </component>
