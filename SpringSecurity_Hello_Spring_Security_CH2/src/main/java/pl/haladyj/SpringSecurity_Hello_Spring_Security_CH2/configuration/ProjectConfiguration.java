@@ -14,7 +14,9 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import pl.haladyj.SpringSecurity_Hello_Spring_Security_CH2.security.provider.CustomAuthenticationProvider;
 
 @Configuration
-public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
+public class ProjectConfiguration
+//        extends WebSecurityConfigurerAdapter
+{
 
 /*    @Bean
     public UserDetailsService userDetailsService(){
@@ -41,13 +43,13 @@ public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
         return NoOpPasswordEncoder.getInstance();
     }*/
 
-    @Override
+/*    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.httpBasic();
         http.authorizeRequests()
                 .anyRequest()
                 .authenticated();
-    }
+    }*/
 
 
 /*    *//**
@@ -67,11 +69,11 @@ public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }*/
 
-    @Autowired
+/*    @Autowired
     public CustomAuthenticationProvider customAuthenticationProvider;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(customAuthenticationProvider);
-    }
+    }*/
 }

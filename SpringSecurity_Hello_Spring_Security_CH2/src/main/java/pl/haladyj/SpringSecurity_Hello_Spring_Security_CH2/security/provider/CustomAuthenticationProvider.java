@@ -9,9 +9,18 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
+    public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+        return null;
+    }
+
+    @Override
+    public boolean supports(Class<?> authentication) {
+        return false;
+    }
+/*    @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
         String username = authentication.getName();
@@ -27,5 +36,5 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
     public boolean supports(Class<?> authentication) {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
-    }
+    }*/
 }
