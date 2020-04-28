@@ -1,5 +1,6 @@
 package pl.haladyj.SpringSecurity_Hello_Spring_Security_CH2.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,6 +11,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import pl.haladyj.SpringSecurity_Hello_Spring_Security_CH2.security.provider.CustomAuthenticationProvider;
 
 @Configuration
 public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
@@ -64,4 +66,12 @@ public class ProjectConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .passwordEncoder(NoOpPasswordEncoder.getInstance());
     }*/
+
+    @Autowired
+    public CustomAuthenticationProvider customAuthenticationProvider;
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(customAuthenticationProvider);
+    }
 }
