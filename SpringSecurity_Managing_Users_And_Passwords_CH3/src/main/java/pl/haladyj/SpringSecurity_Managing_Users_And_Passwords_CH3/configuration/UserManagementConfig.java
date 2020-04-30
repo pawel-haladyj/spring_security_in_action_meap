@@ -4,6 +4,13 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.encrypt.BytesEncryptor;
+import org.springframework.security.crypto.encrypt.Encryptors;
+import org.springframework.security.crypto.encrypt.TextEncryptor;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.keygen.BytesKeyGenerator;
+import org.springframework.security.crypto.keygen.KeyGenerators;
+import org.springframework.security.crypto.keygen.StringKeyGenerator;
 import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -71,5 +78,36 @@ public class UserManagementConfig {
 
         return new DelegatingPasswordEncoder("bcrypt", encoders);
     }
+
+    /**
+     * as above
+     */
+    //public PasswordEncoder passwordEncoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
+
+    StringKeyGenerator stringKeyGenerator = KeyGenerators.string();
+    String salt = stringKeyGenerator.generateKey();
+
+    BytesKeyGenerator bytesKeyGenerator = KeyGenerators.secureRandom(16); //if empty by default it is 8
+    byte[] key = bytesKeyGenerator.generateKey();
+    int keyLength = bytesKeyGenerator.getKeyLength();
+
+    BytesKeyGenerator bytesKeyGenerator2 = KeyGenerators.shared(16);
+    byte[] key1 = bytesKeyGenerator2.generateKey();
+    byte[] key2 = bytesKeyGenerator2.generateKey(); //key1==key2
+
+    String saltX = KeyGenerators.string().generateKey();
+    String passwordX = "secret";
+    String valueToEncrypt = "HELLO";
+
+    BytesEncryptor e = Encryptors.standard(passwordX,saltX);
+    byte[] encryptedX = e.encrypt(valueToEncrypt.getBytes());
+    byte[] decryptedX = e.decrypt(encryptedX);
+
+    BytesEncryptor eS = Encryptors.stronger(passwordX,saltX);
+
+    String valueToEncrypt2 = "Hello";
+    TextEncryptor te = Encryptors.noOpText();
+    String encrypted2 = te.encrypt(valueToEncrypt2);
+
 
 }
