@@ -31,7 +31,7 @@ public class Sha512PasswordEncoder implements PasswordEncoder {
                 result.append(Integer.toHexString(0xFF & digest[i]));
             }
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException()
+            throw new RuntimeException();
         }
         return result.toString();
     }
