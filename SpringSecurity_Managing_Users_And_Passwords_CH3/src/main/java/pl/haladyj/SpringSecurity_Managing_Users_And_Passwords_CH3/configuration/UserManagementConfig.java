@@ -16,7 +16,7 @@ import javax.sql.DataSource;
 @Configuration
 public class UserManagementConfig {
 
-/*    @Bean
+    @Bean
     public UserDetailsService userDetailsService(DataSource dataSource){
 
         String usersByUsernameQuery = "SELECT username, password, enabled FROM users WHERE username = ?";
@@ -25,9 +25,9 @@ public class UserManagementConfig {
         userDetailsManager.setUsersByUsernameQuery(usersByUsernameQuery);
 
         return userDetailsManager;
-    }*/
+    }
 
-    @Bean
+/*    @Bean
     public UserDetailsService userDetailsService() {
         var cs = new DefaultSpringSecurityContextSource("ldap://127.0.0.1:33389/dc=springframework,dc=org");
         cs.afterPropertiesSet();
@@ -42,6 +42,6 @@ public class UserManagementConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
-    }
+    }*/
 
 }
