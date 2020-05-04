@@ -1,1 +1,6 @@
-CREATE TABLE
+CREATE TABLE users(
+id BIGINT NOT NULL PRIMARY KEY,
+username VARCHAR(255),
+password VARCHAR(255),
+authorities VARCHAR(255)
+);

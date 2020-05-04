@@ -1,5 +1,9 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost/ssch4?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/ssch4?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: root
+#    initialization-mode: always
+  jpa:
+    hibernate:
+      dll-auto: update
