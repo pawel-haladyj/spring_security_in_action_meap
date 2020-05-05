@@ -58,6 +58,7 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
             c.realmName("OTHER");
             c.authenticationEntryPoint(new CustomEntryPoint());
         });
+        http.formLogin();
 
         http.authorizeRequests().anyRequest().authenticated();
     }
