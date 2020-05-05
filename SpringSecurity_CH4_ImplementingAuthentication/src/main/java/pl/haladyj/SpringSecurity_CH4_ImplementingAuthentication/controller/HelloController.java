@@ -51,7 +51,7 @@ public class HelloController {
         }
     }
 
-    @GetMapping("hola")
+    @GetMapping("/hola")
     public String hola() throws ExecutionException, InterruptedException {
         Callable<String> task = () -> {
             SecurityContext context = SecurityContextHolder.getContext();
@@ -67,4 +67,10 @@ public class HelloController {
         }
 
     }
+
+    @GetMapping("/home")
+    public String home(){
+        return "HOME";
+    }
+
 }
