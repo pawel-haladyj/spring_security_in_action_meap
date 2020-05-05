@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import pl.haladyj.SpringSecurity_CH4_ImplementingAuthentication.handler.CustomAuthenticationFailureHandler;
+import pl.haladyj.SpringSecurity_CH4_ImplementingAuthentication.handler.CustomAuthenticationSuccessHandler;
 import pl.haladyj.SpringSecurity_CH4_ImplementingAuthentication.security.CustomAuthenticationProvider;
 
 @Configuration
@@ -22,6 +24,12 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public CustomAuthenticationProvider customAuthenticationProvider;
+
+    @Autowired
+    public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+
+    @Autowired
+    public CustomAuthenticationFailureHandler customAuthenticationFailureHandler;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -58,7 +66,11 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
             c.realmName("OTHER");
             c.authenticationEntryPoint(new CustomEntryPoint());
         });
-        http.formLogin().defaultSuccessUrl("/home",true);
+        http
+                .formLogin()
+                //.defaultSuccessUrl("/home",true);
+                .successHandler(customAuthenticationSuccessHandler)
+                .failureHandler(customAuthenticationFailureHandler);
 
         http.authorizeRequests().anyRequest().authenticated();
     }
