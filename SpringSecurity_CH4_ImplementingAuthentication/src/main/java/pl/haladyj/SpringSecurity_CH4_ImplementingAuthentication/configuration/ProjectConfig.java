@@ -62,16 +62,22 @@ public class ProjectConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.httpBasic(c->{
-            c.realmName("OTHER");
-            c.authenticationEntryPoint(new CustomEntryPoint());
-        });
+
         http
                 .formLogin()
-                //.defaultSuccessUrl("/home",true);
-                .successHandler(customAuthenticationSuccessHandler)
-                .failureHandler(customAuthenticationFailureHandler);
+                    //.defaultSuccessUrl("/home",true);
+                    .successHandler(customAuthenticationSuccessHandler)
+                    .failureHandler(customAuthenticationFailureHandler)
+                .and()
+                    .httpBasic(c->{
+                        c.realmName("OTHER");
+                        c.authenticationEntryPoint(new CustomEntryPoint());
+                    });
 
-        http.authorizeRequests().anyRequest().authenticated();
+
+        http
+                .authorizeRequests()
+                .anyRequest()
+                .authenticated();
     }
 }
