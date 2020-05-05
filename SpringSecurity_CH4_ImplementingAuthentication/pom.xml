@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>pl.haladyj</groupId>
-	<artifactId>SpringSecurity_CH4_Implementing_Authentication</artifactId>
+	<artifactId>SpringSecurity_CH4_ImplementingAuthentication</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>SpringSecurity_CH4_Implementing_Authentication</name>
+	<name>SpringSecurity_CH4_ImplementingAuthentication</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

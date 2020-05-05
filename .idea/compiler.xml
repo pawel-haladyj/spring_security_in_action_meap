@@ -6,6 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="SpringSecurity_CH4_ImplementingAuthentication" />
         <module name="SpringSecurity_configuring_authorization_CH6" />
         <module name="SpringSecurity_CH4_Implementing_Authentication" />
         <module name="SpringSecurity_Hello_Spring_Security_CH2" />
@@ -14,6 +15,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringSecurity_CH4_Implementing_Authentication" target="11" />
+      <module name="SpringSecurity_CH4_ImplementingAuthentication" target="11" />
       <module name="SpringSecurity_configuring_authorization_CH6" target="11" />
       <module name="SpringSecurity_Hello_Spring_Security_CH2" target="11" />
       <module name="SpringSecurity_Managing_Users_And_Passwords_CH3" target="11" />
@@ -21,6 +23,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="SpringSecurity_CH4_ImplementingAuthentication" options="-parameters" />
       <module name="SpringSecurity_CH4_Implementing_Authentication" options="-parameters" />
       <module name="SpringSecurity_Hello_Spring_Security_CH2" options="-parameters" />
       <module name="SpringSecurity_Managing_Users_And_Passwords_CH3" options="-parameters" />

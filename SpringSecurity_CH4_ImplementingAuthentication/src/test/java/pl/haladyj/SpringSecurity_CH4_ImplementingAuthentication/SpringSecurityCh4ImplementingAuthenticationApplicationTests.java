@@ -1,4 +1,4 @@
-package pl.haladyj.SpringSecurity_CH4_Implementing_Authentication;
+package pl.haladyj.SpringSecurity_CH4_ImplementingAuthentication;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package pl.haladyj.SpringSecurity_CH4_Implementing_Authentication;
+package pl.haladyj.SpringSecurity_CH4_ImplementingAuthentication;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
