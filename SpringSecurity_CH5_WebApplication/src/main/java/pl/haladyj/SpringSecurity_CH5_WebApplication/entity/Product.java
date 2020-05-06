@@ -1,4 +1,4 @@
-package pl.haladyj.SpringSecurity_CH5_WebApplication.model;
+package pl.haladyj.SpringSecurity_CH5_WebApplication.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
