@@ -8,14 +8,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SpringSecurity_CH4_ImplementingAuthentication" />
         <module name="SpringSecurity_configuring_authorization_CH6" />
-        <module name="SpringSecurity_CH4_Implementing_Authentication" />
-        <module name="SpringSecurity_Hello_Spring_Security_CH2" />
         <module name="SpringSecurity_Managing_Users_And_Passwords_CH3" />
+        <module name="SpringSecurity_Hello_Spring_Security_CH2" />
+        <module name="SpringSecurity_CH5_WebApplication" />
+        <module name="SpringSecurity_CH4_Implementing_Authentication" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="SpringSecurity_CH4_Implementing_Authentication" target="11" />
       <module name="SpringSecurity_CH4_ImplementingAuthentication" target="11" />
+      <module name="SpringSecurity_CH5_WebApplication" target="11" />
       <module name="SpringSecurity_configuring_authorization_CH6" target="11" />
       <module name="SpringSecurity_Hello_Spring_Security_CH2" target="11" />
       <module name="SpringSecurity_Managing_Users_And_Passwords_CH3" target="11" />
@@ -25,6 +27,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="SpringSecurity_CH4_ImplementingAuthentication" options="-parameters" />
       <module name="SpringSecurity_CH4_Implementing_Authentication" options="-parameters" />
+      <module name="SpringSecurity_CH5_WebApplication" options="-parameters" />
       <module name="SpringSecurity_Hello_Spring_Security_CH2" options="-parameters" />
       <module name="SpringSecurity_Managing_Users_And_Passwords_CH3" options="-parameters" />
       <module name="SpringSecurity_configuring_authorization_CH6" options="-parameters" />
