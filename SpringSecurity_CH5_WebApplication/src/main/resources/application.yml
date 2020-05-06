@@ -3,7 +3,8 @@ spring:
     username: root
     password: root
     url: jdbc:mysql://localhost:3306/ssch5?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=TRUE
+    initialization-mode: always
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
