@@ -1,12 +1,14 @@
 package pl.haladyj.SpringSecurity_CH7_Implementing_Filters.security.filter;
 
-
 import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.logging.Logger;
 
-public class RequestValidationFilter implements Filter {
+public class AuthenticationLoggingFilter implements Filter {
+
+    private final Logger logger = Logger.getLogger(AuthenticationLoggingFilter.class.getName());
+
     @Override
     public void doFilter(
             ServletRequest request,
@@ -14,13 +16,9 @@ public class RequestValidationFilter implements Filter {
             FilterChain chain) throws IOException, ServletException {
 
         var httpRequest = (HttpServletRequest) request;
-        var httpResponse = (HttpServletResponse) response;
+        String requestId = httpRequest.getHeader("Request-id");
 
-        String requestId = httpRequest.getHeader("Request-Id");
-
-        if (requestId == null || requestId.isBlank()) {
-            httpResponse.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-        }
+        logger.info("Succesfullty authenticated with id: " + requestId);
 
         chain.doFilter(request, response);
     }
